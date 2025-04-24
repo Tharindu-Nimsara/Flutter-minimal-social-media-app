@@ -2,17 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:social_media_app/components/my_button.dart';
 import 'package:social_media_app/components/my_textfield.dart';
 
-class LoginPage extends StatelessWidget {
+class RegisterPage extends StatelessWidget {
 
+  final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
+
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPWController = TextEditingController();
 
   final void Function()? onTap;
 
-  LoginPage({super.key, required this.onTap});
+  RegisterPage({super.key, required this.onTap});
 
-  //login function
-  void login(){
+  //register function
+  void register(){
 
   }
 
@@ -39,41 +42,33 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 25),
-              
+              //username text field
+              MyTextfield(hintText: "User name", obscureText: false, controller: usernameController),
+              const SizedBox(height: 25),
               //email text field
               MyTextfield(hintText: "Email", obscureText: false, controller: emailController),
               const SizedBox(height: 25),
               //password text field
               MyTextfield(hintText: "Password", obscureText: true, controller: passwordController),
-              const SizedBox(height: 5),
-              //forgot password
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Forgot Password?',
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
               const SizedBox(height: 25),
-              //sign in button
+              //confirm password text field
+              MyTextfield(hintText: "Confirm Password", obscureText: true, controller: confirmPWController),
+             
+             
+              const SizedBox(height: 50),
+              //register in button
               MyButton(
-                text: 'Login',
-                onTap: login,
+                text: 'Register',
+                onTap: register,
+              
               ),
               const SizedBox(height: 25),
-              //don't have an account? Register here
+              //Already have an account? Register here
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Don\'t have an account?',
+                    'Already have an account?',
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary,
                     ),
@@ -82,7 +77,7 @@ class LoginPage extends StatelessWidget {
                   TextButton(
                     onPressed: onTap,
                     child: Text(
-                      'Register here',
+                      'Login here',
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.secondary,
                       ),
